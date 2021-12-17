@@ -18,7 +18,7 @@ S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID \
 s3-invalidate-cloudfront-id
 ```
 
-[@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one when deploying a static s3+cloudfront site,
+[@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one when deploying a static s3+cloudfront site, as seen in the gitlab job template below,
 ```yaml
 job-s3-sync-invalidate-template:
   image: node:latest-alpine
@@ -35,8 +35,8 @@ job-s3-sync-invalidate-template:
     S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID
   script:
     - npm ci
-    - npx s3-invalidate-cloudfront-id
     - npx @foo-software/s3-directory-sync-cli
+    - npx s3-invalidate-cloudfront-id
 ```
 
 
