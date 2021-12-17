@@ -12,7 +12,7 @@ Simply invalidated the cache for a cloudfront id,
 
 Use this package in your CI pipeline to invalidate the cache at the cloudfront id associated with your bucket.
 
-[@foo-software/s3-directory-sync-cli][0] is an excellent package to use in tandem with this one, if you're deploying a static s3/cloudfront site,
+[@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one, to deploy a static s3+cloudfront site,
 ```bash
 # directory sync vars
 S3_DIRECTORY_SYNC_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
