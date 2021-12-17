@@ -1,0 +1,42 @@
+{
+  "name": "s3-invalidate-cloudfront-id",
+  "version": "0.0.1",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "description": "invlidate s3 cloudfront id",
+  "author": "chris <chris@bumblehead.com>",
+  "main": "s3-invalidate-cloudfront-id.mjs",
+  "module": "s3-invalidate-cloudfront-id.mjs",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iambumblehead/s3-invalidate-cloudfront-id.git"
+  },
+  "files": [
+    "s3-invalidate-cloudfront-id.mjs"
+  ],
+  "keywords": [
+    "cloudfront",
+    "cloudfront id",
+    "invalidate",
+    "invalidation",
+    "create-invalidation",
+    "bucket",
+    "deploy",
+    "deployment",
+    "aws",
+    "cli"
+  ],
+  "dependencies": {
+    "aws-sdk": "2.1046.0"
+  },
+  "devDependencies": {
+    "ava": "^4.0.0-rc.1",
+    "eslint": "^8.0.1"
+  },
+  "scripts": {
+    "test": "ava s3-invalidate-cloudfront-id.spec.mjs",
+    "lint": "eslint s3-invalidate-cloudfront-id.spec.mjs",
+    "prepare": "npm run lint && npm test"
+  }
+}
