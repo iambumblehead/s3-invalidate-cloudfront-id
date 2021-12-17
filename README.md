@@ -18,6 +18,19 @@ S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID \
 s3-invalidate-cloudfront-id
 ```
 
+An IAM policy like this can be used,
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "CloudFrontInvalidate",
+    "Effect": "Allow",
+    "Action": "cloudfront:CreateInvalidation",
+    "Resource": "arn:aws:cloudfront::<your-id>:distribution/<your-distribution-id>"
+  }]
+}
+```
+
 [@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one when deploying a static s3+cloudfront site, as seen in the gitlab job template below,
 ```yaml
 job-s3-sync-invalidate-template:
