@@ -11,22 +11,32 @@ Simply invalidated the cache for a cloudfront id,
 
 
 Use this package in your CI pipeline to invalidate the cache at the cloudfront id associated with your bucket.
-
-[@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one, to deploy a static s3+cloudfront site,
 ```bash
-# directory sync vars
-S3_DIRECTORY_SYNC_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-S3_DIRECTORY_SYNC_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-S3_DIRECTORY_SYNC_BUCKET=$AWS_BUCKET_NAME
-S3_DIRECTORY_SYNC_LOCAL_DIRECTORY=build
+S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
+S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
+S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID \
+s3-invalidate-cloudfront-id
+```
 
-# invalidate cache vars
-S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID
-
-npx @foo-software/s3-directory-sync-cli
-npx s3-invalidate-cloudfront-id
+[@foo-software/s3-directory-sync-cli][0] is an excellent package to use with this one when deploying a static s3+cloudfront site,
+```yaml
+job-s3-sync-invalidate-template:
+  image: node:latest-alpine
+  stage: deploy
+  variables:
+    # directory sync vars
+    S3_DIRECTORY_SYNC_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    S3_DIRECTORY_SYNC_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    S3_DIRECTORY_SYNC_BUCKET=$AWS_BUCKET_NAME
+    S3_DIRECTORY_SYNC_LOCAL_DIRECTORY=build
+    # invalidate cache vars
+    S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+    S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+    S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID
+  script:
+    - npm ci
+    - npx s3-invalidate-cloudfront-id
+    - npx @foo-software/s3-directory-sync-cli
 ```
 
 
