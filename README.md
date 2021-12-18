@@ -4,15 +4,16 @@ s3-invalidate-cloudfront-id
 
 
 Simply invalidated the cache for a cloudfront id,
- * Big toolchain: **not required,**
- * AWS serverless lambda environment: **not required,**
- * Overly permissive god-like IAM rules: **not required,**
- * Un-related packages like vue3 and react: **not required,**
- * Lots of reading to understand the point: **not required,**
- * Writing a wrapper script to use this script: **not required**
+ * **NO** big toolchains,
+ * **NO** AWS serverless lambda environment requirement,
+ * **NO** overly permissive god-like IAM rules,
+ * **NO** un-related packages like vue3 and react,
+ * **NO** aws-sdk ~70mb depndency, uses smaller v3 aws client scripts ~3mb
+ * **NO** sifting through walls of text to figure out how things work,
+ * **NO** writing a wrapper script to use this script, use it from cli
 
 
-Use this package in your CI pipeline to invalidate the cache at the cloudfront id associated with your bucket.
+Use this package in your CI pipeline to invalidate cache at the cloudfront id associated with your bucket.
 ```bash
 S3_INVALIDATE_CLOUDFRONT_REGION=eu-central-1 \
 S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
