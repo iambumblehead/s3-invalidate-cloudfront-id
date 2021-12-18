@@ -3,7 +3,7 @@ s3-invalidate-cloudfront-id
 [![npm version](https://badge.fury.io/js/s3-invalidate-cloudfront-id.svg)](https://badge.fury.io/js/s3-invalidate-cloudfront-id) [![install size](https://packagephobia.now.sh/badge?p=s3-invalidate-cloudfront-id)](https://packagephobia.now.sh/result?p=s3-invalidate-cloudfront-id) 
 
 
-Simply invalidated the cache for a cloudfront id,
+Simply invalidate cache for a cloudfront id,
  * **NO** big toolchains,
  * **NO** AWS serverless lambda environment requirement,
  * **NO** overly permissive god-like IAM rules,
