@@ -1,6 +1,6 @@
 {
   "name": "s3-invalidate-cloudfront-id",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "invlidate s3 cloudfront id",
@@ -32,7 +32,7 @@
     "cli"
   ],
   "dependencies": {
-    "aws-sdk": "2.1046.0"
+    "@aws-sdk/client-cloudfront": "3.43.0"
   },
   "devDependencies": {
     "ava": "^4.0.0-rc.1",
