@@ -1,6 +1,6 @@
 {
   "name": "s3-invalidate-cloudfront-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "invlidate s3 cloudfront id",
