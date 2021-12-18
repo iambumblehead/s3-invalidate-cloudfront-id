@@ -21,7 +21,7 @@ S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID \
 s3-invalidate-cloudfront-id
 ```
 
-An IAM policy like this can be used,
+An IAM policy like this can be used. Replace `<account-id>` and `<distribution-id>` with valid id values
 ```json
 {
   "Version": "2012-10-17",
@@ -29,7 +29,7 @@ An IAM policy like this can be used,
     "Sid": "CloudFrontInvalidate",
     "Effect": "Allow",
     "Action": "cloudfront:CreateInvalidation",
-    "Resource": "arn:aws:cloudfront::<your-id>:distribution/<your-distribution-id>"
+    "Resource": "arn:aws:cloudfront::<account-id>:distribution/<distribution-id>"
   }]
 }
 ```
