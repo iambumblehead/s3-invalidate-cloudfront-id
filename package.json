@@ -1,6 +1,6 @@
 {
   "name": "s3-invalidate-cloudfront-id",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "invlidate s3 cloudfront id",
@@ -8,6 +8,9 @@
   "main": "s3-invalidate-cloudfront-id.mjs",
   "module": "s3-invalidate-cloudfront-id.mjs",
   "type": "module",
+  "bin": {
+    "s3-invalidate-cloudfront-id": "s3-invalidate-cloudfront-id.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/iambumblehead/s3-invalidate-cloudfront-id.git"
