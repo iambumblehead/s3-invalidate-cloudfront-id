@@ -10,7 +10,7 @@ Simply invalidated the cache for a cloudfront id,
  * **NO** un-related packages like vue3 and react,
  * **NO** aws-sdk ~70mb depndency, uses smaller v3 aws client scripts ~3mb
  * **NO** sifting through walls of text to figure out how things work,
- * **NO** writing a wrapper script to use this script, use it from cli
+ * **NO** requirement to write a wrapper script, use it from cli
 
 
 Use this package in your CI pipeline to invalidate cache at the cloudfront id associated with your bucket.
