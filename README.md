@@ -1,9 +1,6 @@
 s3-invalidate-cloudfront-id
 ===========================
-[![npm version](https://badge.fury.io/js/s3-invalidate-cloudfront-id.svg)](https://badge.fury.io/js/s3-invalidate-cloudfront-id) [![Build Status](https://github.com/iambumblehead/s3-invalidate-cloudfront-id/workflows/nodejs-ci/badge.svg)][2] [![install size](https://packagephobia.now.sh/badge?p=s3-invalidate-cloudfront-id)](https://packagephobia.now.sh/result?p=s3-invalidate-cloudfront-id) 
-
-
-[2]: https://github.com/iambumblehead/s3-invalidate-cloudfront-id "s3-invalidate-cloudfront-id"
+[![npm version](https://badge.fury.io/js/s3-invalidate-cloudfront-id.svg)](https://badge.fury.io/js/s3-invalidate-cloudfront-id) [![install size](https://packagephobia.now.sh/badge?p=s3-invalidate-cloudfront-id)](https://packagephobia.now.sh/result?p=s3-invalidate-cloudfront-id) 
 
 
 Simply invalidated the cache for a cloudfront id,
