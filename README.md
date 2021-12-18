@@ -1,5 +1,7 @@
 s3-invalidate-cloudfront-id
 ===========================
+[![npm version](https://badge.fury.io/js/s3-invalidate-cloudfront-id.svg)](https://badge.fury.io/js/s3-invalidate-cloudfront-id) [![Build Status](https://github.com/iambumblehead/s3-invalidate-cloudfront-id/workflows/nodejs-ci/badge.svg)][2] [![install size](https://packagephobia.now.sh/badge?p=s3-invalidate-cloudfront-id)](https://packagephobia.now.sh/result?p=s3-invalidate-cloudfront-id) 
+
 
 Simply invalidated the cache for a cloudfront id,
  * Big toolchain: **not required,**
@@ -12,6 +14,7 @@ Simply invalidated the cache for a cloudfront id,
 
 Use this package in your CI pipeline to invalidate the cache at the cloudfront id associated with your bucket.
 ```bash
+S3_INVALIDATE_CLOUDFRONT_REGION=eu-central-1 \
 S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
 S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
 S3_INVALIDATE_CLOUDFRONT_ID=$AWS_CLOUDFRONT_ID \
