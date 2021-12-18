@@ -1,4 +1,7 @@
-import CloudFront from 'aws-sdk/clients/cloudfront.js';
+import {
+  CloudFrontClient,
+  CreateInvalidationCommand
+} from '@aws-sdk/client-cloudfront';
 
 // option names to local names
 const ENV = process.env;
@@ -27,13 +30,16 @@ const invalidateCache = async () => {
   ] = envGet(ENV_CLOUDFRONT_ID, ENV_ACCESS_KEY_ID, ENV_SECRET_ACCESS_KEY);
 
   // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CloudFront.html
-  const cloudfront = new CloudFront({
-    accessKeyId : AWS_ACCESS_KEY_ID,
-    secretAccessKey : AWS_SECRET_ACCESS_KEY
+  const cloudfront = new CloudFrontClient({
+    region : 'eu-central-1',
+    credentials : {
+      accessKeyId : AWS_ACCESS_KEY_ID,
+      secretAccessKey : AWS_SECRET_ACCESS_KEY
+    }
   });
 
-  try { 
-    const res = await cloudfront.createInvalidation({
+  try {
+    const res = await cloudfront.send(new CreateInvalidationCommand({
       DistributionId : AWS_CLOUDFRONT_ID,
       InvalidationBatch : {
         CallerReference : `s3-invalidate-cloudfront-id-${Date.now()}`,
@@ -42,7 +48,7 @@ const invalidateCache = async () => {
           Items : [ '/*' ]
         }
       }
-    }).promise();
+    }));
 
     console.log('[...] invalidation:', JSON.stringify(res, null, '  '));
   } catch(e) {
