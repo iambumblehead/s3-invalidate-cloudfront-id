@@ -59,4 +59,18 @@ job-s3-sync-invalidate-template:
 ```
 
 
+The purpose of `s3-invalidate-cloudfront-id` is to avoid having writing any wrapper scripts, however, it can be used from another script if wanted,
+``` javascript
+import invalidateCloudfrontId from './s3-invalidate-cloudfront-id.mjs';
+
+const awsRes = await invaludateCloudfrontId({
+  S3_INVALIDATE_CLOUDFRONT_REGION: '<region>',
+  S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID: '<bucketid>',
+  S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY: '<bucketsecret>',
+  S3_INVALIDATE_CLOUDFRONT_ID: '<cloudfrontid>'
+});
+```
+
+
+
 [0]: https://github.com/foo-software/s3-directory-sync-cli
