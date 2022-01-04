@@ -14,4 +14,4 @@ import invalidateCloudfrontId from './s3-invalidate-cloudfront-id.mjs';
 
     throw new Error('Cloudfront invalidation failed!');
   }
-})():
+})();
