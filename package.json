@@ -1,6 +1,6 @@
 {
   "name": "s3-invalidate-cloudfront-id",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "invlidate s3 cloudfront id",
@@ -36,10 +36,11 @@
   },
   "devDependencies": {
     "ava": "^4.0.0-rc.1",
-    "eslint": "^8.0.1"
+    "eslint": "^8.0.1",
+    "esmock": "^1.7.2"
   },
   "scripts": {
-    "test": "ava s3-invalidate-cloudfront-id.spec.mjs",
+    "test": "ava --node-arguments=\"--loader=esmock\" s3-invalidate-cloudfront-id.spec.mjs",
     "lint": "eslint s3-invalidate-cloudfront-id.spec.mjs",
     "prepare": "npm run lint && npm test"
   }
