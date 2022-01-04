@@ -1,5 +1,8 @@
 # changelog
 
+ * 1.1.0 _Jan.04.2022_
+   * make package script-importable and usable, not just cli
+   * added unit-test
  * 1.0.2 _Dec.12.2021_
    * added badges
  * 1.0.0 _Dec.12.2021_

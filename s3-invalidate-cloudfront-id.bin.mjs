@@ -3,7 +3,7 @@ import invalidateCloudfrontId from './s3-invalidate-cloudfront-id.mjs';
 
 (async () => {
   try {
-    const res = await invaludateCloudfrontId( process.env );
+    const res = await invalidateCloudfrontId( process.env );
 
     console.log('[...] invalidation:', JSON.stringify(res, null, '  '));
   } catch (e) {
