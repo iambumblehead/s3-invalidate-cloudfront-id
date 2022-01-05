@@ -1,6 +1,6 @@
 {
   "name": "s3-invalidate-cloudfront-id",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "MIT",
   "readmeFilename": "README.md",
   "description": "invlidate s3 cloudfront id",
@@ -22,6 +22,7 @@
   "keywords": [
     "cloudfront",
     "cloudfront id",
+    "cloudfrontid",
     "invalidate",
     "invalidation",
     "create-invalidation",
@@ -29,14 +30,15 @@
     "deploy",
     "deployment",
     "aws",
-    "cli"
+    "cli",
+    "s3"
   ],
   "dependencies": {
-    "@aws-sdk/client-cloudfront": "3.43.0"
+    "@aws-sdk/client-cloudfront": "3.45.0"
   },
   "devDependencies": {
-    "ava": "^4.0.0-rc.1",
-    "eslint": "^8.0.1",
+    "ava": "^4.0.0",
+    "eslint": "^8.6.0",
     "esmock": "^1.7.2"
   },
   "scripts": {

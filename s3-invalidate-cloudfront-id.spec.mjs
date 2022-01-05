@@ -38,10 +38,10 @@ test('should return response from AWS', async t => {
       '@aws-sdk/client-cloudfront' : { CloudFrontClient }
     });
 
-  t.is(await invalidateCloudfrontId({
+  t.deepEqual(await invalidateCloudfrontId({
     S3_INVALIDATE_CLOUDFRONT_REGION : 'eu-central-1',
     S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID : '<bucketid>',
     S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY : '<bucketsecret>',
-    S3_INVALIDATE_CLOUDFRONT_ID : '<cloudfrontid>' 
-  }), resSuccess);
+    S3_INVALIDATE_CLOUDFRONT_IDS : '<cloudfrontid>' 
+  }), [ resSuccess ]);
 });

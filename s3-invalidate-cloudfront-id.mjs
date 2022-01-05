@@ -7,7 +7,7 @@ import {
 const ENV_REGION = 'S3_INVALIDATE_CLOUDFRONT_REGION';
 const ENV_ACCESS_KEY_ID = 'S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID';
 const ENV_SECRET_ACCESS_KEY = 'S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY';
-const ENV_CLOUDFRONT_ID = 'S3_INVALIDATE_CLOUDFRONT_ID';
+const ENV_CLOUDFRONT_IDS = 'S3_INVALIDATE_CLOUDFRONT_IDS';
 
 const envGet = (opts, ...optNames) => {
   const definedOpts = optNames.map(name => opts[name]).filter(o => o);
@@ -24,20 +24,31 @@ const envGet = (opts, ...optNames) => {
 //   S3_INVALIDATE_CLOUDFRONT_REGION: '<region>',
 //   S3_INVALIDATE_CLOUDFRONT_ACCESS_KEY_ID: '<bucketid>',
 //   S3_INVALIDATE_CLOUDFRONT_SECRET_ACCESS_KEY: '<bucketsecret>',
-//   S3_INVALIDATE_CLOUDFRONT_ID: '<cloudfrontid>'
+//   S3_INVALIDATE_CLOUDFRONT_IDS: '<cloudfrontid>'
 // })
 export default async opts => {
   const [
-    AWS_CLOUDFRONT_ID,
+    AWS_CLOUDFRONT_IDS,
     AWS_REGION,
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY
   ] = envGet(
     opts,
-    ENV_CLOUDFRONT_ID,
+    ENV_CLOUDFRONT_IDS,
     ENV_REGION,
     ENV_ACCESS_KEY_ID,
     ENV_SECRET_ACCESS_KEY);
+
+  const AWS_CLOUDFRONT_IDS_ARR = (
+    Array.isArray(AWS_CLOUDFRONT_IDS)
+      ? AWS_CLOUDFRONT_IDS  
+      : typeof AWS_CLOUDFRONT_IDS === 'string'
+        ? AWS_CLOUDFRONT_IDS.split(',') : []
+  ).filter(s => s);
+
+  if (!Array.isArray(AWS_CLOUDFRONT_IDS_ARR) || !AWS_CLOUDFRONT_IDS_ARR.length)
+    throw new Error(
+      `invalid option: ${ENV_CLOUDFRONT_IDS}: ${AWS_CLOUDFRONT_IDS_ARR}`);
 
   // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CloudFront.html
   const cloudfront = new CloudFrontClient({
@@ -48,14 +59,16 @@ export default async opts => {
     }
   });
 
-  return cloudfront.send(new CreateInvalidationCommand({
-    DistributionId : AWS_CLOUDFRONT_ID,
-    InvalidationBatch : {
-      CallerReference : `s3-invalidate-cloudfront-id-${Date.now()}`,
-      Paths : {
-        Quantity : 1,
-        Items : [ '/*' ]
+  return Promise.all(AWS_CLOUDFRONT_IDS_ARR.map(cfid => (
+    cloudfront.send(new CreateInvalidationCommand({
+      DistributionId : cfid,
+      InvalidationBatch : {
+        CallerReference : `s3-invalidate-cloudfront-id-${cfid}-${Date.now()}`,
+        Paths : {
+          Quantity : 1,
+          Items : [ '/*' ]
+        }
       }
-    }
-  }));
+    }))
+  )));
 };
