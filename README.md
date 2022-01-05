@@ -6,9 +6,8 @@ s3-invalidate-cloudfront-id
 Simply invalidate cache for one or more cloudfront ids,
  * **NO** big toolchains,
  * **NO** required wrapper script, use it from cli,
- * **NO** required of AWS serverless lambda environment,
+ * **NO** un-related requirements: no Vue3, React or AWS serverless environment,
  * **NO** overly permissive god-like IAM rules,
- * **NO** un-related packages, such as vue3 or react,
  * **NO** ~70mb aws-sdk dependency, uses ~4mb v3 aws scripts,
  * **NO** sifting through walls of text to figure out how it works
 
